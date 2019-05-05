@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/user.css">
+
+		<!-- Font awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+		<!-- Linux fonts -->
+		<link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<span class="head-slide-left" style="cursor: pointer;"> <i onclick="window.location='/'" class="fas fa-home"></i></span>
+			<span class="head-slide-right">Something</span>
+			<div class="slides">
+				<section>
+					<section>
+						<p>Organisation</p>
+					</section>
+					<section>
+						<ul>
+							<li>Fill in the survey</li>
+							<li>Sign the AFG sheet</li>
+							<li>Join the <a href="https://teams.microsoft.com/l/team/19%3ab91d0985d5fa4fa6b3faa13f2aed7db7%40thread.skype/conversations?groupId=5aef409a-b24c-4eb5-a36f-60d5d6f1167b&tenantId=5a4ba6f9-f531-4f32-9467-398f19e69de4">Teams workspace</a></li>
+							<li>09:00 - 12:00 Lectures, Practicals and Discussions</li>
+							<li>13:00 - ~15:00 Small Assignments</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h1>Introduction to Linux</h1>
+					<p>...and why it is awesome</p>
+				</section>
+				<!-- What is Linux -->
+				<section>
+					<section>
+						<h4>What is Linux</h4>
+					</section>
+					<!-- Embed mentimeter presentation -->
+					<section>
+						<iframe class='stretch' allowfullscreen='true' allowtransparency='true' frameborder='0' data-src='https://www.mentimeter.com/embed/cf45a4c124f380f9e59f1a5a1f01bf9c/f17314380d49'></iframe>
+					</section>
+					<section>
+						<p>Linux is a <span class="emph">Kernel</span>.</p>
+						<p class="fragment">The kernel handles communication between hardware and software.</p>
+					</section>
+					<section>
+						<img class="stretch" data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Kernel_Layout.svg/2000px-Kernel_Layout.svg.png">
+					</section>
+					<section>
+						<p>Linux, Unix, BSD... are different implementations of the same idea</p>
+						<img class="stretch bg-white" data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Unix_history-simple.svg/2000px-Unix_history-simple.svg.png">
+					</section>
+				</section>
+				<section>
+					<p>What are we using in a typical Linux-based OS?</p>
+					<ul>
+						<li class="fragment">Linux as a kernel</li>
+						<li class="fragment"><a href="https://www.gnu.org/software/coreutils/manual/coreutils.html">GNU coreutils</a> as apps on top of the kernel</li>
+						<li class="fragment">Custom software on top of that</li>
+						<li class="fragment">[A Desktop environment]</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<p>Linux distributions</p>
+						<ul>
+							<li class="fragment">...are packages of a kernel an customized software on top</li>
+							<li class="fragment">...tend to have a particular focus</li>
+						</ul>
+					</section>
+					<section>
+						<p><i class="fl-debian"></i>Debian <i class="fl-ubuntu"></i>Ubuntu <i class="fl-elementary"></i>Elementary <i class="fl-linuxmint"></i>Mint</p>
+						<ul>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Easy to use</li>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Stable</li>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Beginner friendly</li>
+							<hr class="fragment">
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Software several updates behind</li>
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Bulky & Resource heavy</li>
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Less customizable</li>
+						</ul>
+					</section>
+					<section>
+						<p><i class="fl-archlinux"></i>Arch <i class="fl-gentoo"></i>Gentoo</p>
+						<ul>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> <strong>Very</strong> customizable</li>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Bleeding edge</li>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> High performance</li>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Rolling release model</li>
+							<hr class="fragment">
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Needs a lot of know-how to use well</li>
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Even then, tedious to use</li>
+						</ul>
+					</section>
+					<section>
+						<p><i class="fl-tux"></i>MX Linux <i class="fl-manjaro"></i>Manjaro</p>
+						<ul>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Best of both worlds</li>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Active community & development</li>
+							<hr class="fragment">
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Young</li>
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Can have stability issues</li>
+						</ul>
+					</section>
+					<section>
+						<p><i class="fl-redhat"></i>Red Hat <i class="fl-fedora"></i>Fedora <i class="fl-centos"></i>CentOS</p>
+						<ul>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Business facing</li>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Current, well maintened</li>
+							<li class="fragment"> <i class="fas fa-thumbs-up"></i> Secure</li>
+							<hr class="fragment">
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Not free (Red Hat)</li>
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Overkill for desktop (CentOS)</li>
+							<li class="fragment"> <i class="fas fa-thumbs-down"></i> Too many updates?</li>
+						</ul>
+					</section>
+					<section>
+						<p>Linux from scratch</p>
+						<p class="fragment"> <i class="fas fa-skull"></i> No</p>
+					</section>
+					<section>
+						<p>RebeccaBlackOS</p>
+						<p class="fragment"> <i class="fas fa-skull"></i> Definitely No</p>
+					</section>
+					<section>
+						<img class="stretch" data-src="img/linux-beards.jpg">
+					</section>
+					<section>
+						<div class="left">
+							<p>Women outnumbered 20:1, still contribute better code</p>
+							<p><a href="https://peerj.com/articles/cs-111/"> https://peerj.com/articles/cs-111/</a></p>
+						</div>
+						<img class="right" data-src="img/men-women-code.jpg">
+					</section>
+					<section>
+						<p>Resources for women in Linux</p>
+						<p class="small">The Anita Borg Institute for Women and Tech <a href="https://anitab.org">https://anitab.org</a></p>
+						<p class="small">Global Women in Tech <a href="https://www.globalwomenintech.com/">https://www.globalwomenintech.com/</a></p>
+						<p class="small">Women who Tech <a href="https://www.womenwhotech.com/">https://www.womenwhotech.com/</a></p>
+						<hr>
+						<p>Linux Specific</p>
+						<p class="small">LinuxChix <a href="https://www.linuxchix.org/">https://www.linuxchix.org/</a></p>
+						<p class="small">Arch Linux Women <a href="https://archwomen.org">https://archwomen.org</a></p>
+						<p class="small">Fedora Women <a href="https://fedoraproject.org/wiki/Women">https://fedoraproject.org/wiki/Women</a></p>
+					</section>
+					<section>
+						<p>Resources for LGBTQ+</p>
+						<p>Lesbians who Tech <a href="https://lesbianswhotech.org/newyork2019/">https://lesbianswhotech.org</a></p>
+						<p>Tra4ns*Hack <a href="http://www.transhack.org/">http://www.transhack.org/</a></p>
+						<p>LGBTQ in Technology <a href="https://lgbtq.technology/">https://lgbtq.technology/</a></p>
+						<p>Out in Tech <a href="https://outintech.com/">https://outintech.com/</a></p>
+					</section>
+				</section>
+				<section>
+					<p>Why Linux is awesome</p>
+				</section>
+				<section>
+					<section>
+						<p>Linux runs on everything</p>
+					</section>
+					<section>
+						<p>Supercomputers</p>
+						<img class="stretch" data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Summit_%28supercomputer%29.jpg/1280px-Summit_%28supercomputer%29.jpg">
+					</section>
+					<section>
+						<p>The LHC</p>
+						<img class="stretch" data-src="https://tecnico.ulisboa.pt/files/2018/02/curso-de-fisica-no-lhc-2-1140x641.jpg">
+					</section>
+					<section>
+						<p>Nuclear Submarines</p>
+						<img class="stretch" data-src="https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/photo/maritime-systems/undersea-460.jpg.pc-adaptive.1920.medium.jpeg">
+						<aside class="notes">Lockheed Martin</aside>
+					</section>
+					<section>
+						<p>The ISS</p>
+						<img class="stretch" data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/International_Space_Station_after_undocking_of_STS-132.jpg/1280px-International_Space_Station_after_undocking_of_STS-132.jpg">
+					</section>
+					<section>
+						<p>Fridges</p>
+						<img class="stretch" data-src="https://3dprint.com/wp-content/uploads/2015/01/chillhub.png">
+						<aside class="notes">ChillHub</aside>
+					</section>
+					<section>
+						<p>Phones</p>
+						<img class="stretch" data-src="https://edge.alluremedia.com.au/m/g/2016/10/google_pixel_3.jpg">
+					</section>
+					<section>
+						<p>Slow cookers</p>
+						<img class="stretch" data-src="https://uncrate.com/p/2013/12/crock-pot-wemo-smart-slow-cooker-xl.jpg">
+						<aside class="notes">WeMo Crockpot</aside>
+					</section>
+					<section>
+						<p>Guns</p>
+						<img class="stretch" data-src="https://zdnet3.cbsistatic.com/hub/i/2015/01/18/3d53251a-dd45-4e0a-b68b-31fea5ddfce2/a9c39e72a922977006f4523cb4090d33/trackingpoint.png">
+						<aside class="notes">TrackingPoint</aside>
+					</section>
+					<section>
+						<p>Superbikes</p>
+						<img class="stretch" data-src="http://plugbike.com/wp-content/uploads/2009/11/mavizen-ttx02-electric-race-bike.jpg">
+						<aside class="notes">Mavizen TTX02</aside>
+					</section>
+					<section>
+						<p>Self Driving Cars</p>
+						<img class="stretch" data-src="http://2.bp.blogspot.com/-bXN50-Z6y-o/Uk54CUuyhfI/AAAAAAAAB_Y/MN75U3ZuaMY/s1600/Google+toyota+prius.jpg">
+					</section>
+					<section>
+						<p>Automated Cow Milking Systems</p>
+						<img class="stretch" data-src="https://www.delaval.com/globalassets/inriver-resources/image/keybenefitimage/vmsv300_kb1_master.jpg/cropbestbetmiddlecenter-364x243--2146303270.jpg">
+					</section>
+				</section>
+				<section>
+					<p>The Linux ecosystem is FOSS</p>
+					<ul>
+					<li class="fragment">Free to develop in / extend</li>
+					<li class="fragment">Widely available</li>
+					<li class="fragment">Community driven</li>
+					</ul>
+				</section>
+				<section>
+					<p>Linux adapts</p>
+					<ul>
+					<li class="fragment">Scale to any resource level</li>
+					<li class="fragment">Install only what you need</li>
+					<li class="fragment">Secure</li>
+					<li class="fragment">Private & Transparent</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				],
+				history: true,
+				fragmentInURL: true,
+				slideNumber: true
+			});
+		</script>
+	</body>
+</html>

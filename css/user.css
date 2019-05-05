@@ -1,0 +1,65 @@
+.emph {
+  text-decoration: underline;
+}
+
+.bg-white {
+  background-color: white !important;
+}
+
+ul > li {
+  list-style: none;
+}
+
+.left {
+  float: left;
+  width: 49%;
+  text-align: left;
+  left: 0;
+}
+
+.right {
+  float: right;
+  width: 49%;
+  text-align: right;
+}
+
+.small {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.monokai-black {
+  color: #272822;
+}
+
+.monokai-red {
+  color: #F92672;
+}
+
+.monokai-blue {
+  color: #66D9EF;
+}
+
+.monokai-green {
+  color: #A6E22E;
+}
+
+.monokai-orange {
+  color: #FD971F;
+}
+
+.head-slide-left {
+  position: fixed;
+  float: left;
+  left: 0.5em;
+  top: 0.5em;
+  z-index: 9999;
+}
+
+.head-slide-right {
+  position: fixed;
+  float: right;
+  right: 0.5em;
+  top: 0.5em;
+  z-index: 9999;
+}

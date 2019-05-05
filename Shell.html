@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/user.css">
+
+		<!-- Font awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+		<!-- Linux fonts -->
+		<link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Title slide -->
+				<section>
+					<h1>Talking to a computer</h1>
+					<p>...commands, patterns, shells and more</p>
+				</section>
+				<section>
+					<section>
+						<p> <i class="fas fa-terminal"></i> Shells and Terminals</p>
+					</section>
+					<section>
+						<p>In ancient times, terminals were physical things that were used to interact with a computer</p>
+						<img class="stretch" data-src="https://upload.wikimedia.org/wikipedia/commons/7/76/ASR-33_1.jpg">
+					</section>
+					<section>
+						<p>Nowadays, we <em>emulate</em> these devices</p>
+						<img class="stretch" data-src="img/temu.png">
+					</section>
+					<section>
+						<p>What do you do with it?</p>
+						<p class="fragment">Type a command and the computer interprets it.</p>
+						<pre>
+							<code class="fragment bash" data-trim data-noescape>
+								curl -s https://twitter.com/iamdevloper |
+								hxnormalize -x |
+								hxselect 'p.tweet-text' |
+								w3m -dump -cols 2000 -T 'text/html' |
+								head -n 1 |
+								cowsay
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="html" data-trim data-noescape>
+								 ________________________________________
+								/ 1969: -what're you doing with that 2KB \
+								| of RAM? -sending people to the moon    |
+								| 2017: -what're you doing with that     |
+								\ 1.5GB of RAM? -running Slack           /
+								 ----------------------------------------
+								        \   ^__^
+								         \  (oo)\_______
+								            (__)\       )\/\
+								                ||----w |
+								                ||     ||
+							</code>
+						<pre>	
+					</section>
+				</section>
+				<section>
+					<p> <i class="fas fa-terminal"></i> The shell</p>
+				</section>
+				<section>
+					<section>
+						<p>The shell is the software on the computer that <em>interprets the commands</em></p>
+					</section>
+					<section>
+						<p> Shell timeline </p>
+						<ul>
+							<li class="fragment">The Bourne shell: 1977 <pre><code>sh</code></pre></li>
+							<li class="fragment">The Bourne-again shell: 1989 <pre><code>bash</code></pre></li>
+							<li class="fragment">The Z shell: 1990 <pre><code>zsh</code></pre></li>
+						</ul>
+					</section>
+					<section>
+						<p>Bash like shells (Bash & Zsh)</p>
+						<ul>
+							<li>Auto completion</li>
+							<li>History</li>
+							<li>Advanced editing</li>
+							<li>Pattern matching, brace expansion</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<p>A shell command</p>
+					</section>
+					<section>
+						<p>Let's look at a command: Coreutils' <code>rm</code> to remove files and directories</p>
+						<pre>
+							<code  class="bash" data-trim data-noescape>
+								rm -r -f --no-preserve-root --interactive=once /
+							</code>
+						</pre>
+					</section>
+					<section>
+						<img class="stretch" data-src="img/example_program.png">
+					</section>
+					<section>
+						<p>Getting Help</p>
+						<p>One of these usually works</p>
+						<pre class="bash" data-trim data-noescape>
+							<code>&#60;prog&#62; -h</code>
+						</pre>
+						<pre class="bash" data-trim data-noescape>
+							<code>&#60;prog&#62; --help</code>
+						</pre>
+						<pre class="bash" data-trim data-noescape>
+							<code>man &#60;prog&#62;</code>
+						</pre>
+						<p>When in doubt... Google (DuckDuckGo)</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<p>SSH: Secure Shell</p>
+						<ul>
+							<li class="fragment">Not a shell</li>
+							<li class="fragment">Communication protocol to securely connect to a remote computer and send commands to it</li>
+						</ul>
+					</section>
+					<section>
+						<img class="stretch" src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2017/07/asymmetric-encryption.jpg">
+					</section>
+					<section>
+						<p>Example command</p>
+						<pre>
+							<code class="bash" data-trim data-noescape>
+								ssh -p &#60;PORT&#62; &#60;user&#62;@&#60;host&#62;
+								ssh -p 922 bastian@microasp.upsc.se
+							</code>
+						</pre>
+					</section>
+					<section>
+						<iframe class="stretch" data-src="https://localhost:4200"></iframe>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				],
+				history: true,
+				fragmentInURL: true,
+				slideNumber: true
+			});
+		</script>
+	</body>
+</html>

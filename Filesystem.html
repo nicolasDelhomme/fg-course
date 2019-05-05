@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/user.css">
+
+		<!-- Font awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+		<!-- Linux fonts -->
+		<link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Title slide -->
+				<section>
+					<h4>The file system</h4>
+					<p>...and other small annoyances</p>
+				</section>
+				<section>
+					<section>
+						<p>File system layout</p>
+					</section>
+					<section>
+						<img class="stretch" data-src="img/fs-layout.png">
+					</section>
+					<section>
+						<p>A Linux path</p>
+						<pre>
+							<code class="bash" data-trim data-noescape>
+								/home/bastian/secret_files/cat_videos.mkv
+								^__________________________________________root
+								 ^^^^______________________________________directory
+								     ^_____________________________________separator
+								      ^^^^^^^______________________________directory
+								             ^_____________________________separator
+								              ^^^^^^^^^^^^_________________directory
+								                          ^________________separator
+								                           ^^^^^^^^^^^^^^^^file
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<p>Coreutils to get info on files</p>
+						<ul>
+							<li><code class="monokai-red">ls&nbsp;&nbsp;</code>: List files and directories</li>
+							<li><code class="monokai-red">stat</code>: Detailed info on files and directories</li>
+						</ul>
+					</section>
+					<section>
+						<p>(Re)Moving and changing file permissions</p>
+						<ul>
+							<li><code class="monokai-red">rm&nbsp;&nbsp;&nbsp;</code>: Remove files and directories</li>
+							<li><code class="monokai-red">mv&nbsp;&nbsp;&nbsp;</code>: Move files and directories</li>
+							<li><code class="monokai-red">chmod</code>: Change permissions</li>
+						</ul>
+					</section>
+					<section>
+						<p>The <code>ls</code> command</p>
+						<pre>
+							<code class="bash" data-trim data-noescape>
+								ls -l -A --color=auto /share/datasets
+							</code>
+							<code class="bash" data-trim data-noescape>
+								total 5732
+								-rw-rw-rw- 1 root root  126284 May  4 20:48 cacoa.tsv
+								-rw-rw-rw- 1 root root 5696587 May  4 20:48 movies.tsv
+								-rw-rw-rw- 1 root root   44801 May  4 20:48 pokemon.tsv
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>The permission bits</p>
+						<pre>
+							<code class="html" data-trim data-noescape>
+								- rw- rw- rw-
+								^_________________ File type (-,d,l)
+								  ^^^_____________ Permissions for the user who owns this
+								      ^^^_________ Permissions for the group members
+								          ^^^_____ Permissions for everyone else
+							</code>
+						</pre>
+					</section>
+					<section>
+						<ul>
+							<li><code class="emph monokai-red">r</code>: Can read the contents of the file, can make copies of the file</li>
+							<li><code class="emph monokai-red">w</code>: Can modify/overwrite/delete the file</li>
+							<li><code class="emph monokai-red">x</code>: Can execute the file/script if it's a program. Can <code>cd</code> to directory</li>
+						</ul>
+					</section>
+					<section>
+						<p>Changing permissions (if you own the file)</p>
+						<pre>
+							<code class="bash" data-trim data-noescape>
+								# Give file owner all permissions
+								chmod u+rwx &#60;file&#62;
+							</code>
+							<code class="bash" data-trim data-noescape>
+								# Remove all permissions from group members and others
+								chmod go-rwx &#60;file&#62;
+							</code>
+						</pre>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				],
+				history: true,
+				fragmentInURL: true,
+				slideNumber: true
+			});
+		</script>
+	</body>
+</html>
