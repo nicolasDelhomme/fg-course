@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/user.css">
+
+		<!-- Font awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+		<!-- Linux fonts -->
+		<link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<span class="head-slide-left" style="cursor: pointer;"> <i onclick="window.location='/fg-course'" class="fas fa-home"></i></span>
+			<span class="head-slide-right">bschiffthaler.github.io/fg-course</span>
+			<div class="slides">
+				<section>
+					<p>More Shell Things</p>
+				</section>
+				<section>
+					<section>
+						<p>Special path aliases</p>
+					</section>
+					<section>
+						<p>Try</p>
+						<pre>
+							<code class="bash" data-trim data-noescape>
+								# Print working directory
+								pwd
+								# List some directories
+								ls -la ~
+								ls -la ~admin
+								ls -la .
+								ls -la ..
+								# Change working directory
+								cd /share/datasets
+								# List some more
+								ls -la .
+								ls -la ..
+							</code>
+						</pre>
+					</section>
+					<section>
+						<iframe class="stretch" data-src="http://localhost"></iframe>
+					</section>
+				</section>
+				<section>
+					<section>
+						<p>Environment variables</p>
+						<ul>
+							<li class="fragment">Store essential information</li>
+							<li class="fragment">Can be used interactively and in scripts</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment"><code class="monokai-red">$PWD</code> - Your current working directory</li>
+							<li class="fragment"><code class="monokai-red">$USER</code> - Your username</li>
+							<li class="fragment"><code class="monokai-red">$HOME</code> - Your home directory</li>
+							<li class="fragment"><code class="monokai-red">$PATH</code> - A list of directories where Linux will look for programs</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<p>Output redirection</p>
+					</section>
+					<section>
+						<p><code>stdout</code> and <code>stderr</code></p>
+						<ul>
+							<li class="fragment">"Normal" program output goes to stdout</li>
+							<li class="fragment">Log and error messages go to stderr</li>
+							<li class="fragment">We can redirect that output into a file using the <code class="monokai-red">&#62;</code> operator</li>
+						</ul>
+					</section>
+					<section>
+						<pre>
+							<code class="bash" data-trim data-noescape>
+								# Check who is online
+								who
+								# Save who is online into a file
+								who > ~/online_users.txt
+								# Read that file back
+								less ~/online_users.txt
+							</code>
+						</pre>
+					</section>
+					<section>
+						<iframe class="stretch" data-src="http://localhost"></iframe>
+					</section>
+					<section>
+						<p>Redirecting <code>stdout</code> to programs using the <code class="monokai-red">|</code></p>
+						<ul>
+							<li class="fragment">Output of program on the left becomes input of program on the right</li>
+						</ul>
+					</section>
+					<section>
+						<pre>
+							<code class="bash" data-trim data-noescape>
+								tail -n +1 /share/datasets/pokemon.tsv |
+								sort -t $'\t' -k5nr |
+								head
+							</code>
+						</pre>
+					</section>
+					<section>
+						<iframe class="stretch" data-src="http://localhost"></iframe>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+				],
+				history: true,
+				fragmentInURL: true,
+				slideNumber: true
+			});
+		</script>
+	</body>
+</html>

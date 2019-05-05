@@ -10,6 +10,10 @@ ul > li {
   list-style: none;
 }
 
+.squares {
+  list-style: square;
+}
+
 .left {
   float: left;
   width: 49%;
