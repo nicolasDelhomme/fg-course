@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/user.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Linux fonts -->
+    <link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <span class="head-slide-left" style="cursor: pointer;"> <i onclick="window.location='/fg-course'" class="fas fa-home"></i></span>
+      <span class="head-slide-right">bschiffthaler.github.io/fg-course</span>
+      <div class="slides">
+        <section>
+          <h1>Job managers</h1>
+        </section>
+        <section>
+          <section>
+            <p>How can we use compute farms (supercomputers)?</p>
+            <ul>
+              <li class="fragment">Watch out for overconsumption</li>
+              <li class="fragment">Find empty node(s)</li>
+              <li class="fragment">Unfair / greedy users</li>
+              <li class="fragment">Job managers!</li>
+            </ul>
+          </section>
+          <section>
+            <p>SLURM is an intermediary between your script and its execution</p>
+            <img class="stretch" data-src="https://pdc-web-01.csc.kth.se/files/support/images/LoginNodeWarning.PNG">
+          </section>
+          <section>
+            <p>Slurm commands</p>
+            <ul>
+              <li class="fragment"> <code class="monokai-red">squeue</code> : Get status of job queue</li>
+              <li class="fragment"> <code class="monokai-red">sbatch</code> : Submit batch job (script)</li>
+              <li class="fragment"> <code class="monokai-red">srun</code> : Submit single command</li>
+              <li class="fragment"> <code class="monokai-red">scancel</code> : Cancel a job</li>
+            </ul>
+          </section>
+          <section>
+            <p>You need to tell SLURM about your resource usage</p>
+            <ul>
+              <li class="fragment">Number of CPUs you need</li>
+              <li class="fragment">[Memory you need]</li>
+              <li class="fragment">[Time you need]</li>
+            </ul>
+          </section>
+          <section>
+            <p>Resources</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                srun -c 1 --mem=2G -t 01:00:00 prog arg arg2 arg3 ...
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Resources</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                #!/bin/bash
+                #SBATCH -c 1
+                #SBATCH --mem=2G
+                #SBATCH -t 01:00:00
+
+                prog arg arg2 arg3
+              </code>
+
+              <code class="bash" data-trim data-noescape>
+                # Doesn't have to have x permission
+                sbatch my_script.sh
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Batch scripts can also take arguments</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                #!/bin/bash
+                #SBATCH -c 1
+                #SBATCH --mem=2G
+                #SBATCH -t 01:00:00
+
+                GENOME=$1
+                READF=$2
+                READS=$3
+                OUTNAME=$4
+                bwa mem -b -o $4 $1 $2 $3
+              </code>
+
+              <code class="bash" data-trim data-noescape>
+                # Doesn't have to have x permission
+                sbatch my_script.sh genome.fa read1.fq.gz read2.fq.gz alignments.bam
+              </code>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+        ],
+        history: true,
+        fragmentInURL: true,
+        slideNumber: true
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/user.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Linux fonts -->
+    <link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <span class="head-slide-left" style="cursor: pointer;"> <i onclick="window.location='/fg-course'" class="fas fa-home"></i></span>
+      <span class="head-slide-right">bschiffthaler.github.io/fg-course</span>
+      <div class="slides">
+        <section>
+          <h1>Shell scripting</h1>
+        </section>
+        <section>
+          <section>
+            <p>Why script things</p>
+            <ul>
+              <li class="fragment">Automate workflows</li>
+              <li class="fragment">Keep persistent record</li>
+              <li class="fragment">Share code</li>
+            </ul>
+          </section>
+          <section>
+            <p>Why not python</p>
+            <pre>
+              <code class="python" data-trim data-noescape>
+                #!/usr/bin/env python3
+
+                import os
+                import subprocess
+                from sys import argv
+
+                if os.exists(argv[1]):
+                  with open(argv[1], 'r') as handle_in:
+                    for line in handle_in:
+                      r = suprocess.run(['prog', 'arg', 'arg2', line.strip()])
+                else:
+                  print('Infile does not exist!')
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Why not python</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                #!/bin/bash
+
+                cat $1 | while read l
+                do
+                  prog arg arg2 $l
+                done
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>The simplest script</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                #!/bin/bash
+
+                echo "Hello, World!"
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Loops</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                #!/bin/bash
+
+                # A for loop
+                for ITEM in 1 2 3 4 5
+                do
+                  echo $ITEM
+                done
+
+                # A while loop
+                cat my_files.txt | while read FILE
+                do
+                  echo $FILE
+                done
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Conditions</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                #!/bin/bash
+
+                if [ -f my_file.txt ]
+                then
+                  echo "my_file.txt exists!"
+                fi
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Arguments</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                #!/bin/bash
+
+                INFILE=$1
+                OUTFILE=$2
+
+                echo "I got $INFILE as input. Will create $OUTFILE as output."
+              </code>
+
+              <code class="bash" data-trim data-noescape>
+                ./this_scipt.sh my_infile.txt my_outfile.txt
+              </code>              
+            </pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <p>Let's write a script!</p>
+            <p>We have a (sub)set of FASTQ files that we want to align to a genome. We also want to call variants (SNPs). We will use <code class="monokai-red">bwa mem</code> to align and <code class="monokai-red">bcftools mpileup</code> to call variants.</p>
+          </section>
+          <section>
+            <p>Steps</p>
+            <ol>
+              <li class="fragment">Align data</li>
+              <li class="fragment">Sort alignments</li>
+              <li class="fragment">Index alignment</li>
+              <li class="fragment">Call variants</li>
+            </ol>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+        ],
+        history: true,
+        fragmentInURL: true,
+        slideNumber: true
+      });
+    </script>
+  </body>
+</html>
