@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/user.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Linux fonts -->
+    <link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <span class="head-slide-left" style="cursor: pointer;"> <i onclick="window.location='/fg-course'" class="fas fa-home"></i></span>
+      <span class="head-slide-right">bschiffthaler.github.io/fg-course</span>
+      <div class="slides">
+        <section>
+          <pre>
+              <code class="python" data-trim data-noescape>
+               # Copy cacoa.tsv
+               cp /share/datasets/cacoa.tsv ~/cacoa_copy.tsv
+               # Find the highest rated bar
+               sort -k7nr,7 -t $'\t' ~/cacoa_copy.tsv | head -n 1
+               # Count which company had the most bars tested
+               sort ~/cacoa_copy.tsv | cut -f 1 | uniq -c | sort -k1nr,1 | head -n 1
+               # Extract all the lines where "Italy" is mentioned. Store the result in a new file in your home called "cacoa_italy.tsv"
+               grep -i italy ~/cacoa_copy.tsv > ~/cacoa_italy.tsv
+               # Make a new directory called "day-1"
+               mkdir ~/day-1
+               # Move all your files from the previous exercise into that folder
+               mv ~/cacoa_copy.tsv ~/cacoa_italy.tsv ~/day-1
+               # Change permissions of that folder such that only you can read write and execute
+               chmod go-rwx ~/day-1
+              </code>
+            </pre>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+        ],
+        history: true,
+        fragmentInURL: true,
+        slideNumber: true
+      });
+    </script>
+  </body>
+</html>
