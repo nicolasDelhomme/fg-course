@@ -2,12 +2,18 @@
   text-decoration: underline;
 }
 
-.bg-white {
+.bg-white, .bg-white > * {
   background-color: white !important;
+  color: #222 !important;
+}
+
+img {
+  box-shadow: none !important;
+  border: none !important;
 }
 
 ul > li {
-  list-style: none;
+  /*list-style: none;*/
 }
 
 .squares {
