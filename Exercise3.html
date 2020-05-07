@@ -36,13 +36,11 @@
       <div class="slides">
         <section>
           <ul class="small">
-            <li class="squares">Using the files in <code class="monokai-blue">/share/datasets/blast/</code></li>
+            <li class="squares">Using the files in <code class="monokai-blue">/public/blast_results/</code></li>
             <li class="squares">Pick one of the subsets</li>
-            <li class="squares">Use the <code class="monokai-red">coverage</code> program to compute the blast coverage of each target. Save the output to a file. Write this as a SLURM script.</li>
-            <li class="squares">Load the output from the previous command in R</li>
-            <li class="squares">Select the best hit based on the score in column 3 for each query (column 1)</li>
+            <li class="squares">Load the output from BLAST in R</li>
             <li class="squares">Analyze the taxonomy of the best hits using the taxonomizr package: <a href="https://github.com/sherrillmix/taxonomizr"> taxonomizr</a></li>
-            <li class="squares"> The database for taxonomy is here <code class="monokai-blue">/public/taxdb/tdb.sql</code>. Please do not perform database setup, it'll take 5+ hours and use 60+ GB of data.</li>
+            <li class="squares"> The database for taxonomy is here <code class="monokai-blue">/public/taxdb.sql</code>. Please do not perform database setup, it'll take 5+ hours and use 60+ GB of data.</li>
           </ul>
         </section>
       </div>
