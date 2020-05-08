@@ -1,7 +1,7 @@
 # Getting data into R
-dir('/share/datasets/')
+dir('/data/week1/')
 
-cacoa <- read_tsv('/share/datasets/cacoa.tsv')
+cacoa <- read_tsv('/data/week1/cacoa.tsv')
 
 ggplot(data = cacoa,
        mapping = aes(x = factor(ReviewDate), y = Rating)) +
@@ -18,7 +18,7 @@ ggplot(data = cacoa,mapping = aes(x = Rating)) +
 ggplot(data = cacoa,mapping = aes(x = Rating)) +
   geom_density()
 
-pokemon <- read_tsv('/share/datasets/pokemon.tsv')
+pokemon <- read_tsv('/data/week1/pokemon.tsv')
 colnames(pokemon) <- c('ID', 'Name', 'Type1', 'Type2',
                        'Total', 'HP', 'Attack',
                        'Defense', 'SpAtk', 'SpDef',

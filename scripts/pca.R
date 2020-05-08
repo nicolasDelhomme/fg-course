@@ -1,4 +1,4 @@
-pokemon <- read_tsv('/share/datasets/pokemon.tsv')
+pokemon <- read_tsv('/data/week1/pokemon.tsv')
 colnames(pokemon) <- c('ID', 'Name', 'Type1', 'Type2',
                        'Total', 'HP', 'Attack',
                        'Defense', 'SpAtk', 'SpDef',
