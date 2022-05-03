@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DB=/public/blast/nt
+DB=/db/mash/nt
 FASTA=$1
 PREFIX=$(basename $1)
 PREFIX=${PREFIX%.fasta}
