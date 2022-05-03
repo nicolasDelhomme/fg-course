@@ -32,13 +32,13 @@
   <body>
     <div class="reveal">
       <span class="head-slide-left" style="cursor: pointer;"> <i onclick="window.location='/fg-course'" class="fas fa-home"></i></span>
-      <span class="head-slide-right">bschiffthaler.github.io/fg-course</span>
+      <span class="head-slide-right">nicolasdelhomme.github.io/fg-course</span>
       <div class="slides">
         <section>
           <pre>
               <code class="python" data-trim data-noescape>
                # Copy cacoa.tsv
-               cp /data/week1/cacoa.tsv ~/cacoa_copy.tsv
+               cp ~/data/1_intro/cacoa.tsv ~/cacoa_copy.tsv
                # Find the highest rated bar
                sort -k7nr,7 -t $'\t' ~/cacoa_copy.tsv | head -n 1
                # Count which company had the most bars tested
