@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/user.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Linux fonts -->
+    <link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <span class="head-slide-left" style="cursor: pointer;"> <i onclick="window.location='/fg-course'" class="fas fa-home"></i></span>
+      <span class="head-slide-right">nicolasDelhomme.github.io/fg-course</span>
+      <div class="slides">
+        <section>
+          <h1>Feedback</h1>
+        </section>
+        <section>
+          <h3>Yesterday</h3>
+          <ul>
+            <li class="fragment">Harder, take it slower (50/50)</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Improvement</h3>
+          <ul>
+            <li class="fragment">Slower</li>
+            <li class="fragment">Sloower</li>
+            <li class="fragment">Slooower</li>
+            <li class="fragment">OK, I got you</li>
+          </ul>
+        </section>
+        <section>
+          <p>Evaluation</p>
+          <ul>
+          <li class="fragment">Navigate the filesystem: <code class="monokai-blue">3.15/5</code></li>
+          <li class="fragment">Write a script: <code class="monokai-red">2.34/5</code></li>
+          <li class="fragment">Use the job manager: <code class="monokai-blue">2.73/5</code> but really 50% <= 2 and 50% >= 4</li>
+          </ul>
+        </section>
+        <section>
+          <p>Shall we move on to R?</p>
+          <ul>
+            <li class="fragment"> Yes: 42%</li>
+            <li class="fragment"> No: 58%</li>
+          </ul>
+        </section>
+        <section>
+          <p>Plan for today</p>
+          <<ul>
+            <li class="fragment">1. Revisit exercise 3, but here is the deal: I will go <code class="monokai-red">slow</code> if you interrupt me and ask questions <code class="monokai-blue">2.34/5</code></li>
+            <li class="fragment"> Remember, there is no such thing as a stupid question!</li>
+            <li class="fragment"> 2. Start looking into R in the afternoon, in a more group self-study style</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true }
+        ],
+        history: true,
+        fragmentInURL: true,
+        slideNumber: true
+      });
+    </script>
+  </body>
+</html>
