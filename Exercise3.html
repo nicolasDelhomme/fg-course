@@ -35,13 +35,95 @@
       <span class="head-slide-right">bschiffthaler.github.io/fg-course</span>
       <div class="slides">
         <section>
+            <p>Let's write a script!</p>
+            <p>We have a (sub)set of FASTQ files that we want to align to a genome. We also want to call variants (SNPs). We will use <code class="monokai-red">bwa mem</code> to align, <code class="monokai-red">samtools</code> to manipulate the alignment files and <code class="monokai-red">bcftools mpileup</code> to call variants.</p>
+          </section>
+          <section>
+            <p>What is the data about?</p>
+            <p>The data is from a <a href="https://doi.org/10.1186/s13059-021-02521-w">study</a> in a yeast: Saccharomycodes ludwigii, that does not do show evidence of crossing-over. The sequencing fastq files and BWA indices are in <code class="monokai-blue">~/data/1_intro/fastq</code> and <code class="monokai-blue">~/data/1_intro/indices</code>, respectively</p>
+          </section>
+          <section>
+            <p>Steps</p>
+            <ol>
+              <li class="fragment">Align data</li>
+              <li class="fragment">Sort alignments</li>
+              <li class="fragment">Index alignment</li>
+              <li class="fragment">Call variants</li>
+            </ol>
+          </section>
+          <section>
+            <p>Job manager (SLURM) commands</p>
+            <ul>
+              <li class="fragment"> <code class="monokai-red">squeue</code> : Get status of job queue</li>
+              <li class="fragment"> <code class="monokai-red">sbatch</code> : Submit batch job (script)</li>
+              <li class="fragment"> <code class="monokai-red">srun</code> : Submit single command</li>
+              <li class="fragment"> <code class="monokai-red">scancel</code> : Cancel a job</li>
+            </ul>
+          </section>
+          <section>
+            <p>You need to tell SLURM about your resource usage</p>
+            <ul>
+              <li class="fragment">Number of CPUs you need</li>
+              <li class="fragment">[Memory you need]</li>
+              <li class="fragment">[Time you need]</li>
+            </ul>
+          </section>
+          <section>
+            <p>Resources</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                srun -c 1 --mem=2G -t 01:00:00 prog arg arg2 arg3 ...
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Resources</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                #!/bin/bash
+                #SBATCH -c 1
+                #SBATCH --mem=2G
+                #SBATCH -t 01:00:00
+
+                prog arg arg2 arg3
+              </code>
+
+              <code class="bash" data-trim data-noescape>
+                # Doesn't have to have x permission
+                sbatch my_script.sh
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Batch scripts can also take arguments</p>
+            <pre>
+              <code class="bash" data-trim data-noescape>
+                #!/bin/bash
+                #SBATCH -c 1
+                #SBATCH --mem=2G
+                #SBATCH -t 01:00:00
+
+                GENOME=$1
+                READF=$2
+                READS=$3
+                OUTNAME=$4
+                bwa mem -b -o $4 $1 $2 $3
+              </code>
+
+              <code class="bash" data-trim data-noescape>
+                # Doesn't have to have x permission
+                sbatch my_script.sh genome.fa read1.fq.gz read2.fq.gz alignments.bam
+              </code>
+          </section>
+        <section>
+          <p>Actual Exercise</p>
           <ul class="small">
-            <li class="squares">Using the files in <code class="monokai-blue">/public/blast_results/</code></li>
-            <li class="squares">Pick one of the subsets</li>
-            <li class="squares">Load the output from BLAST in R</li>
-            <li class="squares">Analyze the taxonomy of the best hits using the taxonomizr package: <a href="https://github.com/sherrillmix/taxonomizr"> taxonomizr</a></li>
-            <li class="squares"> The database for taxonomy is here <code class="monokai-blue">/public/taxdb.sql</code>. Please do not perform database setup, it'll take 5+ hours and use 60+ GB of data.</li>
-            <li class="square">The choice of methods, presentation of results is left to you.</li>
+            <li class="squares">Using the code described <a href="https://gist.github.com/nicolasDelhomme/e2e990bb08c1d1c4ac9eccdd199bf28b">there</a></li>
+            <li class="squares">1. Get the script to run through the queueing system on a file - Hint: <code class="monokai-red">sbatch</code></li>
+            <li class="squares">2. The script takes only one argument, modify the script so it runs on PE data - Hint: <code class="monokai-red">bwa mem</code></li>
+            <li class="squares">3. The script writes to hardcoded filenames, modify the scripts so it can be run without overwriting results - Hint: <a href="https://tldp.org/LDP/abs/html/parameter-substitution.html"</a></li>
+            <li class="squares">The one above is a tough one, Hint - <code class="monokai-red">dirname, $(), ${var/Pattern/Replacement}</code></li>
+            <li class="squares">Write a loop to submit all ten PE samples</li>
           </ul>
         </section>
       </div>

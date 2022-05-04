@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/user.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Linux fonts -->
+    <link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <span class="head-slide-left" style="cursor: pointer;"> <i onclick="window.location='/fg-course'" class="fas fa-home"></i></span>
+      <span class="head-slide-right">bschiffthaler.github.io/fg-course</span>
+      <div class="slides">
+        <section>
+          <ul class="small">
+            <li class="squares">Using the files in <code class="monokai-blue">/public/blast_results/</code></li>
+            <li class="squares">Pick one of the subsets</li>
+            <li class="squares">Load the output from BLAST in R</li>
+            <li class="squares">Analyze the taxonomy of the best hits using the taxonomizr package: <a href="https://github.com/sherrillmix/taxonomizr"> taxonomizr</a></li>
+            <li class="squares"> The database for taxonomy is here <code class="monokai-blue">/public/taxdb.sql</code>. Please do not perform database setup, it'll take 5+ hours and use 60+ GB of data.</li>
+            <li class="square">The choice of methods, presentation of results is left to you.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+        ],
+        history: true,
+        fragmentInURL: true,
+        slideNumber: true
+      });
+    </script>
+  </body>
+</html>
