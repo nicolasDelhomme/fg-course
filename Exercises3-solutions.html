@@ -45,7 +45,7 @@
             <p>Let's review script writing :-)</p>
               <section>
                 <ul>
-              <li class="fragment">First, we adapted the script so it takes one more argument</li
+                  <li class="fragment">First, we adapted the script so it takes one more argument</li>
                   <li class="fragment">We looked up the manual for bwa mem and figure out how to pass the extra argument</li>
                   <li class="fragment">Note: in "Usage" lines, < > and [ ] represents mandatory and optional arguments by convention - still we do not write these characters in our command lines :-)</li>
                   <li class="fragment">We assigned the command line arguments $1 to $4 to variables to document our code better. Important!</li>
@@ -69,24 +69,24 @@
               </ul>
             </section>
             <section>
-          <pre>
+              <pre>
               <code class="python" data-trim data-noescape>
                 #!/bin/bash
 
-# safe
-set -eu
+                # safe
+                set -eu
 
-# find the forward files, loop through them and sbatch the jobs
+                # find the forward files, loop through them and sbatch the jobs
 
-# define variables
-fileDir=~/data/1_intro/fastq
-inxFile=~/data/1_intro/indices/Sd-ludwigii-V16-RM.fasta
+                # define variables
+                fileDir=~/data/1_intro/fastq
+                inxFile=~/data/1_intro/indices/Sd-ludwigii-V16-RM.fasta
 
-# loop to find the files
-for f in $(find $fileDir -name "*_1*.f*q.gz"); do
-        out=$(basename ${f/_1_sequence.fastq.gz/})
-        sbatch callVariants.sh $f ${f/_1/_2} $inxFile result-$out
-done
+                # loop to find the files
+                for f in $(find $fileDir -name "*_1*.f*q.gz"); do
+                        out=$(basename ${f/_1_sequence.fastq.gz/})
+                        sbatch callVariants.sh $f ${f/_1/_2} $inxFile result-$out
+                done
                 </code>
                 </pre>
             </section>    
@@ -102,16 +102,22 @@ done
         </section>
         <section>
           <p>A few notes on Git</p>
-          <ul>
-            <li class="fragment">It is <code class="monokai-red">optional</code></li>
-            <li class="fragment">Use it if you like to give it a try, now or later in the course. Drop it if it's a hindrance.</li>
-            <li class="fragment">Git is centralised, when you clone, you create <code class="monokai-red">your own</code> copy</li>
-            <li class="fragment">Git is a versioning system, it only <code class="monokai-red">follows</code> what you tell it to - <code class="monokai-blue">Cmd: git add</code></li>
-            <li class="fragment">Git is a versioning system, it records your changes<code class="monokai-red">locally</code> - <code class="monokai-blue">Cmd: git commit -m"some message"</code></li>
-            <li class="fragment">Git is a concurrent system, it is meant to work with <code class="monokai-red">others</code> - <code class="monokai-blue">Cmd: git push</code> and <code class="monokai-blue">Cmd: git pull</code></li>
-            <li class="fragment"><code class="monokai-red">Most IMPORTANT:</code> Git is meant for <code class="monokai-red">only</code> code, no <code class="monokai-red">data!</code></li>
-            <li class="fragment">Git is much nicer to use through a Graphical User Interface (GUI) - check in RStudio or look up a VS-Code extension</li>
+          <section>
+            <ul>
+              <li class="fragment">It is <code class="monokai-red">optional</code></li>
+              <li class="fragment">Use it if you like to give it a try, now or later in the course. Drop it if it's a hindrance.</li>
+              <li class="fragment">Git is centralised, when you clone, you create <code class="monokai-red">your own</code> copy</li>
+              <li class="fragment">Git is a versioning system, it only <code class="monokai-red">follows</code> what you tell it to - <code class="monokai-blue">Cmd: git add</code></li>
+              <li class="fragment">Git is a versioning system, it records your changes<code class="monokai-red">locally</code> - <code class="monokai-blue">Cmd: git commit -m"some message"</code></li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li class="fragment">Git is a concurrent system, it is meant to work with <code class="monokai-red">others</code> - <code class="monokai-blue">Cmd: git push</code> and <code class="monokai-blue">Cmd: git pull</code></li>
+              <li class="fragment"><code class="monokai-red">Most IMPORTANT:</code> Git is meant for <code class="monokai-red">only</code> code, no <code class="monokai-red">data!</code></li>
+              <li class="fragment">Git is much nicer to use through a Graphical User Interface (GUI) - check in RStudio or look up a VS-Code extension</li>
           </ul>
+          </section>
         </section>
         <section>
           <p>Today's plan</p>
