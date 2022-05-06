@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/user.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Linux fonts -->
+    <link href="https://cdn.rawgit.com/Lukas-W/font-linux/v0.9/assets/font-linux.css" rel="stylesheet">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <span class="head-slide-left" style="cursor: pointer;"> <i onclick="window.location='/fg-course'" class="fas fa-home"></i></span>
+      <span class="head-slide-right">bschiffthaler.github.io/fg-course</span>
+      <div class="slides">
+        <section>
+          <p>Tip of the day</p>
+          <ul>
+            <li class="fragment">VS-Code has a nice plugin to visualise html pages w/o leaving: 'Live Preview'</li>
+            <li class="fragment">Interested in some extra support? Maxi and I thought we could offer some extra help 8:30-9:00, around lunch time, and 16:00-16:30.</li>
+          </ul>
+        </section>
+        <section>
+            <p>Let's review script writing :-)</p>
+              <section>
+              <li class="fragment">First, we adapted the script so it takes one more argument</li>
+                <ul>
+                  <li class="fragment">We looked up the manual for bwa mem and figure out how to pass the extra argument</li>
+                  <li class="fragment">Note: in "Usage" lines, < > and [ ] represents mandatory and optional arguments by convention - still we do not write these characters in our command lines :-)</li>
+                  <li class="fragment">We assigned the command line arguments $1 to $4 to variables to document our code better. Important!</li>
+                </ul>
+              </section>
+              <section>
+                <ul>
+                <li class="fragment">Then, we made sure to render the script as generic as possible</li>
+                <li class="fragment">We remove all hardcoded reference to files, replace then to be dynamically created</li>
+              </ul>
+            </section>
+            <section>
+              <p>Current state</p>
+              <ul>
+                <li class="fragment">We have a <a href="https://gist.github.com/nicolasDelhomme/66595cc62c9ce65e5e763fb5be67eba8">script</a> that is now agnostic of the data</li>
+                <li class="fragment">We can re-use it for any project!</li>
+                <li class="fragment">We can re-use it it on any compute (your laptop, and HPC, the cloud, you name it)!</li>
+                <li class="fragment">We can submit it through a queueing system :-)</li>
+                <li class="fragment">We created another script to run that script on all our samples!</li>
+                <li class="fragment">These are the basics: one script that has the logic, one script that passes the data to it</li>
+              </ul>
+            </section>
+            <section>
+          <pre>
+              <code class="python" data-trim data-noescape>
+                #!/bin/bash
+
+# safe
+set -eu
+
+# find the forward files, loop through them and sbatch the jobs
+
+# define variables
+fileDir=~/data/1_intro/fastq
+inxFile=~/data/1_intro/indices/Sd-ludwigii-V16-RM.fasta
+
+# loop to find the files
+for f in $(find $fileDir -name "*_1*.f*q.gz"); do
+        out=$(basename ${f/_1_sequence.fastq.gz/})
+        sbatch callVariants.sh $f ${f/_1/_2} $inxFile result-$out
+done
+                </code>
+                </pre>
+            </section>    
+            <section>
+              <p>Further optimisation</p>
+              <ul>
+                <li class="fragment">There are always ways to optimise</li>
+                <li class="fragment">bwa, samtools, bcftools all write to STDOUT</li>
+                <li class="fragment">We could <code class="monokai-blue">|</code> from one job to the next, skipping all temp files! Neat :-)</li>
+                <li class="fragment">If you feel like it, give it a try</li>
+              </ul>
+            </section>
+        <section/>
+        <section>
+          <p>A few notes on Git</p>
+          <ul>
+            <li class="fragment">It is <code class="monokai-red">optional</code></li>
+            <li class="fragment">Use it if you like to give it a try, now or later in the course. Drop it if it's a hindrance.</li>
+            <li class="fragment">Git is centralised, when you clone, you create <code class="monokai-red">your own</code> copy</li>
+            <li class="fragment">Git is a versioning system, it only <code class="monokai-red">follows</code> what you tell it to - <code class="monokai-blue">Cmd: git add</code></li>
+            <li class="fragment">Git is a versioning system, it records your changes<code class="monokai-red">locally</code> - <code class="monokai-blue">Cmd: git commit -m"some message"</code></li>
+            <li class="fragment">Git is a concurrent system, it is meant to work with <code class="monokai-red">others</code> - <code class="monokai-blue">Cmd: git push</code> and <code class="monokai-blue">Cmd: git pull</code></li>
+            <li class="fragment"><code class="monokai-red">Most IMPORTANT:</code> Git is meant for <code class="monokai-red">only</code> code, no <code class="monokai-red">data!</code></li>
+            <li class="fragment">Git is much nicer to use through a Graphical User Interface (GUI) - check in RStudio or look up a VS-Code extension</li>
+          </ul>
+        </section>
+        <section>
+          <p>Today's plan</p>
+          <section>
+          <p>Preprocessing pipeline</p>
+          <ul>
+            <li class="fragment">You probably all devised a pipeline by now</li>
+            <li class="fragment">FastQC</li>
+            <li class="fragment">SortMeRNA</li>
+            <li class="fragment">FastQC</li>
+            <li class="fragment">Trimmomatic</li>
+            <li class="fragment">FastQC</li>
+            <li class="fragment">Salmon</li>
+            <li class="fragment">MultiQC</li>
+          </ul>
+          </section>
+          <section>
+            <p>Tasks</p>
+            <li class="fragment">Start implementing it :-)</li>
+            <li class="fragment">Use the concept above</li>
+            <li class="fragment">Each of you has 4 CPUs reserved on the server, make use of that as a group (i.e. split the preprocessing, e.g. by samples)</li>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+        ],
+        history: true,
+        fragmentInURL: true,
+        slideNumber: true
+      });
+    </script>
+  </body>
+</html>
